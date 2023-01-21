@@ -1,9 +1,11 @@
 import React from "react";
+import Weather from "./components/weather";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
     <>
-      <h1>I deploy my first website on express</h1>
+      <Weather />
     </>
   );
 };
