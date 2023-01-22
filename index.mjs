@@ -1,7 +1,10 @@
 import express from "express";
 import path from "path";
-// import { __dirname } from "path";
+import cors from "cors";
 const app = express();
+
+app.use(cors());
+
 const port = process.env.PORT || 5000;
 
 app.get("/home", (req, res) => {
@@ -12,6 +15,25 @@ app.get("/home", (req, res) => {
 app.get("/about", (req, res) => {
   console.log(`Some is getting message at about section by  ${req.ip}`);
   res.send("Hello World About!");
+});
+
+app.get("/hello", (req, res) => {
+  res.send({
+    humidity: 30,
+    min: 30,
+    max: 40,
+    postalCode: 75500,
+  });
+});
+
+app.get("/weather/:weatherData", (req, res) => {
+  res.send({
+    city: req.params.weatherData,
+    humidity: 30,
+    min: 30,
+    max: 40,
+    postalCode: 75500,
+  });
 });
 
 const __dirname = path.resolve();
